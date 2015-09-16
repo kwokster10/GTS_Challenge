@@ -1,15 +1,17 @@
 <table>
   <tr>
     <th>ID &nbsp; &nbsp;</th>
-    <th>Engine Name</th>
-    <th>Exchange &nbsp;</th>
-    <th>IP &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+    <th>Engine Name &nbsp; &nbsp;</th>
+    <th>Exchange &nbsp; &nbsp; &nbsp; &nbsp;</th>
+    <th>IP &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
     <th>Port &nbsp;</th>
   </tr>
+    <% counter = 0 %>
     <% @connections.each do |connection| %>
   <tr>
     <td><%= connection.idconnections %></td>
     <td><%= connection.engineName %></td>
+
     <% if connection.exchange == 1 %>
       <td>NYSE</td>
     <%  elsif connection.exchange == 2 %>
@@ -19,10 +21,11 @@
     <% else %>
     <td>DIRECT EDGE</td>
     <% end %>
-    <td><%= connection.ip %></td>
+
+    <td><%= @ips[counter] %></td>
     <td><%= connection.port %></td>
   </tr>
-
+    <% counter += 1 %>
   <% end %>
   
 </table>
