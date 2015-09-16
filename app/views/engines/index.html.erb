@@ -10,8 +10,8 @@
   <tr>
     <td><%= engine.engineName %></td>
     <td><%= engine.lastRun %></td>
-    <td><%= engine.users.map(&:username).join(", ") %></td>
-    <td><%= engine.connections.map(&:sessionName).join(", ") %></td>
+    <td><%= engine.users %></td>
+    <td><%= engine.connections%></td>
   </tr>
 
   <% end %>
