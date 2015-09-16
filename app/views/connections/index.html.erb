@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th>ID &nbsp; &nbsp;</th>
+    <th>Engine Name</th>
+    <th>Exchange &nbsp;</th>
+    <th>IP &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+    <th>Port &nbsp;</th>
+  </tr>
+    <% @connections.each do |connection| %>
+  <tr>
+    <td><%= connection.idconnections %></td>
+    <td><%= connection.engineName %></td>
+    <td><%= connection.exchange %></td>
+    <td><%= connection.ip %></td>
+    <td><%= connection.port %></td>
+  </tr>
+
+  <% end %>
+  
+</table>
