@@ -8,10 +8,10 @@
     <% @engines.each do |engine| %>
   
   <tr>
-    <td><%= engine.engineName %></td>
+    <td><%= link_to engine.engineName, engine_connections_path(engine.engineName) %></td>
     <td><%= engine.lastRun %></td>
     <td><%= engine.users %></td>
-    <td><%= engine.connections%></td>
+    <td><%= engine.connections %></td>
   </tr>
 
   <% end %>

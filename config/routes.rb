@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
   root 'engines#index'
 
-  resources :engines, only: [:index]
-  resources :connections, only: [:index]
+  resources :engines, only: [:index] do
+    resources :connections, only: [:index] 
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
