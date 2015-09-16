@@ -1,9 +1,6 @@
 class User < ActiveRecord::Base
-	has_many :usertoengines
-	has_many :engines, through: :usertoengines
+	has_many :usertoengines, foreign_key: "idusers", primary_key: "idusers"
+	has_many :engines, :through => :usertoengines
 
-	# has_many :flavors, dependent: :destroy
-	# belongs_to :usertoengines
-
-	# default_scope {order(:name => :ASC)}
+	default_scope {order(:username => :ASC)}
 end

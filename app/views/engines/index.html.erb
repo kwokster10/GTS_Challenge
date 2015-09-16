@@ -1,17 +1,17 @@
 <table>
   <tr>
     <th>Engine Name &nbsp; &nbsp;</th>
-    <th>Last Run</th>
-    <th>Users</th>
-    <th>Connections</th>
+    <th>Last Run &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+    <th>Users &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+    <th>Connections &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
   </tr>
     <% @engines.each do |engine| %>
   
   <tr>
     <td><%= link_to engine.engineName, engine_connections_path(engine.engineName) %></td>
     <td><%= engine.lastRun %></td>
-    <td><%= engine.users %></td>
-    <td><%= engine.connections %></td>
+    <td><%= engine.users.map(&:username).join(", ") %></td>
+    <td><%= engine.connections.map(&:sessionName).join(", ") %></td>
   </tr>
 
   <% end %>
