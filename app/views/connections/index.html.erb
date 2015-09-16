@@ -10,7 +10,15 @@
   <tr>
     <td><%= connection.idconnections %></td>
     <td><%= connection.engineName %></td>
-    <td><%= connection.exchange %></td>
+    <% if connection.exchange == 1 %>
+      <td>NYSE</td>
+    <%  elsif connection.exchange == 2 %>
+    <td>NASDAQ</td>
+    <% elsif connection.exchange == 3 %>
+    <td>BATS</td>
+    <% else %>
+    <td>DIRECT EDGE</td>
+    <% end %>
     <td><%= connection.ip %></td>
     <td><%= connection.port %></td>
   </tr>
