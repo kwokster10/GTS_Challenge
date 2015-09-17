@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    <th>Engine Name &nbsp; &nbsp;</th>
+    <th>Last Run &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+    <th>Users &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+    <th>Connections &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+  </tr>
+  <tr>
+    <td><%= @engine.engineName %></td>
+
+    <%= form_for :engine, url:{action: :update}, method: :put do |f| %>
+    <td>
+      <%= f.datetime_select :lastRun, value: @engine.lastRun %>
+      <%= f.submit "Update" %>
+    </td>
+    <% end %>
+
+    <td><%= @engine.users.map(&:username).join(", ") %></td>
+    <td><%= @engine.connections.map(&:sessionName).join(", ") %></td>
+  </tr>
+
+</table>
+
+<br>
+<%= link_to "Back to Engines Index", engines_path(@engine.engineName) %>
+

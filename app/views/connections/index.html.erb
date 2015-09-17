@@ -4,7 +4,8 @@
     <th>Engine Name &nbsp; &nbsp;</th>
     <th>Exchange &nbsp; &nbsp; &nbsp; &nbsp;</th>
     <th>IP &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
-    <th>Port &nbsp;</th>
+    <th>Port &nbsp; &nbsp; &nbsp;</th>
+    <th>Actions &nbsp;</th>
   </tr>
     <% counter = 0 %>
     <% @connections.each do |connection| %>
@@ -24,8 +25,12 @@
 
     <td><%= @ips[counter] %></td>
     <td><%= connection.port %></td>
+    <td><%= link_to "Edit", edit_engine_connection_path(connection.engineName, connection.id) %></td>
   </tr>
     <% counter += 1 %>
   <% end %>
   
 </table>
+
+<br>
+<%= link_to "Back to Engines Index", engines_path(@engine.engineName) %>

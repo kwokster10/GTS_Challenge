@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <th>ID &nbsp; &nbsp;</th>
+    <th>Engine Name &nbsp; &nbsp;</th>
+    <th>Exchange &nbsp; &nbsp; &nbsp; &nbsp;</th>
+    <th>IP &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+    <th>Port &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+    <th>Actions &nbsp;</th>
+  </tr>
+  <tr>
+    <td><%= @connection.idconnections %></td>
+    <%= form_for :connection, url:{action: :update}, method: :put do |f| %>
+    <td><%= f.text_field :engineName, value: @connection.engineName %></td>
+    <td><%= f.select :exchange, options_for_select([["NYSE", 1], ["NASDAQ", 2], ["BATS", 3], ["DIRECT EDGE", 4]], @connection.exchange) %></td>
+    <td><%= f.text_field :ip, value: @ip %></td>
+    <td><%= f.text_field :port, value: @connection.port %></td>
+    <td><%= f.submit "Update" %></td>
+    <% end %>
+  </tr>
+ 
+</table>
+
+<br>
+<%= link_to "Back to Engine " + @connection.engineName, engine_connections_path(@connection.engineName) %>

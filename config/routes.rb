@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   root 'engines#index'
 
-  resources :engines, only: [:index] do
-    resources :connections, only: [:index] 
+  resources :engines, only: [:index, :edit, :update] do
+    resources :connections, only: [:index, :edit, :update] 
   end
 
 
