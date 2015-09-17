@@ -21,13 +21,15 @@ class ConnectionsController < ApplicationController
 	def edit
 		@connection = Connection.find(params[:id])
 		@ip = IPAddr.new(@connection.ip, Socket::AF_INET)
+		@engines = Engine.all
 	end
 
 	# updating specific Engine
 	def update 
 		@connection = Connection.find(params[:id])
-		# binding.pry
+		ip = (IPAddr.new(connection_params["ip"])).to_i
 		@connection.update(connection_params)
+		@connection.update({ip: ip})
 		redirect_to engine_connections_path
 	end
 
