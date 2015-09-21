@@ -17,7 +17,7 @@
       <tbody> 
         <tr>
           <td><%= link_to engine.engineName, engine_connections_path(engine.engineName), class: "btn btn-info" %></td>
-          <td><%= engine.lastRun %> &nbsp; <%= link_to "Edit", edit_engine_path(engine.engineName), class: "btn btn-warning" %></td>
+          <td><%= engine.lastRun.to_s.gsub(/[a-z]/i, "") %> &nbsp; <%= link_to "Edit", edit_engine_path(engine.engineName), class: "btn btn-warning" %></td>
           <td><%= engine.users.map(&:username).join(", ") %></td>
           <td><%= engine.connections.map(&:sessionName).join(", ") %></td>
         </tr>

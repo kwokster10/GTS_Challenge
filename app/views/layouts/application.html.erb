@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<% if session[:username] %>
+	<%= link_to "Sign Out", session_path, method: :delete, class: "btn btn-danger" %>
+  <a style="color: black">Welcome, <%= session[:username] %>!</a>
+<% end %>
+
 <%= yield %>
 
 </body>
