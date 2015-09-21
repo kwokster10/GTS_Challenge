@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
     password_digest = Digest::MD5.hexdigest(params[:session][:password])
     if user && user.password == password_digest
       session[:user_id] = user.idusers
-    	binding.pry
       session[:username] = user.username
       redirect_to engines_path
     else
