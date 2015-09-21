@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
+  resource :session, only: [:new, :create, :destroy]
   resources :engines, only: [:index, :edit, :update] do
     resources :connections, only: [:index, :edit, :update] 
   end
   
-  root 'engines#index'
+  root 'sessions#new'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
