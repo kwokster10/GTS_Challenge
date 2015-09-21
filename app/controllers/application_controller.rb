@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate
   
+  # used to check if user is logged in
   private
     def authenticate
       if !session[:user_id]

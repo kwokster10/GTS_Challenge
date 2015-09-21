@@ -1,8 +1,9 @@
 class EnginesController < ApplicationController
 
-	# showing all engines
+	# showing all engines belonging to user
 	def index
-		@engines = Engine.all
+		@user = User.find(session[:user_id])
+		@engines = @user.engines
 	end 
 
 	# edit view of specific Engine
@@ -13,7 +14,6 @@ class EnginesController < ApplicationController
 	# updating specific Engine
 	def update
 		@engine = Engine.find(params[:id])
-		# binding.pry
 		@engine.update(engine_params)
 		redirect_to root_path
 	end

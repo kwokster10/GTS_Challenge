@@ -3,6 +3,7 @@ require 'digest'
 class SessionsController < ApplicationController
   skip_before_action :authenticate, only: [:new, :create]
 
+  # creating a session
   def create
     user = User.find_by(username: params[:session][:username])
     password_digest = Digest::MD5.hexdigest(params[:session][:password])
@@ -17,9 +18,11 @@ class SessionsController < ApplicationController
     end
   end
 
+  # rendering new session form
   def new
   end
 
+ 	# destroying session
   def destroy
     reset_session
     redirect_to new_session_path
