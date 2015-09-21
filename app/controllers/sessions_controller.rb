@@ -20,6 +20,9 @@ class SessionsController < ApplicationController
 
   # rendering new session form
   def new
+    if session[:user_id]
+      redirect_to engines_path
+    end
   end
 
  	# destroying session
