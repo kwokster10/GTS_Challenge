@@ -1,24 +1,56 @@
-<table>
-  <tr>
-    <th>ID &nbsp; &nbsp;</th>
-    <th>Engine Name &nbsp; &nbsp;</th>
-    <th>Exchange &nbsp; &nbsp; &nbsp; &nbsp;</th>
-    <th>IP &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
-    <th>Port &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
-    <th>Actions &nbsp;</th>
-  </tr>
-  <tr>
-    <td><%= @connection.idconnections %></td>
-    <%= form_for :connection, url:{action: :update}, method: :put do |f| %>
-    <td><%= f.select :engineName, options_from_collection_for_select(@engines, :engineName, :engineName, @connection.engineName) %></td>
-    <td><%= f.select :exchange, options_for_select([["NYSE", 1], ["NASDAQ", 2], ["BATS", 3], ["DIRECT EDGE", 4]], @connection.exchange) %></td>
-    <td><%= f.text_field :ip, value: @ip %></td>
-    <td><%= f.text_field :port, value: @connection.port %></td>
-    <td><%= f.submit "Update" %></td>
-    <% end %>
-  </tr>
- 
-</table>
+<div id="container">
+    <div class="col-lg-10 col-lg-offset-1 col-sm-10 col-sm-offset-1">
+      <div class="row">
+        <h2 class="col-sm-12">Edit Connection Information:</h2>
+      </div>
+
+<%= form_for :connection, url:{action: :update}, method: :put, html: {class: "form-horizontal"}  do |f| %>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">ID</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @connection.idconnections %></p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Engine Name", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.select :engineName, options_from_collection_for_select(@engines, :engineName, :engineName, @connection.engineName) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Exchange", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.select :exchange, options_for_select([["NYSE", 1], ["NASDAQ", 2], ["BATS", 3], ["DIRECT EDGE", 4]], @connection.exchange) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">IP</label>
+    <div class="col-sm-10">
+      <%= f.text_field :ip, value: @ip %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Port", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :port, value: @connection.port %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit "Update", class: "btn btn-success" %>
+    </div>
+  </div>
+
+<% end %>
 
 <br>
-<%= link_to "Back to Engine " + @connection.engineName, engine_connections_path(@connection.engineName) %>
+<%= link_to "Back to Engine " + @connection.engineName, engine_connections_path(@connection.engineName), class: "btn btn-primary"  %>
+
+  </div>
+</div>

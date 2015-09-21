@@ -1,36 +1,48 @@
-<table>
-  <tr>
-    <th>ID &nbsp; &nbsp;</th>
-    <th>Engine Name &nbsp; &nbsp;</th>
-    <th>Exchange &nbsp; &nbsp; &nbsp; &nbsp;</th>
-    <th>IP &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
-    <th>Port &nbsp; &nbsp; &nbsp;</th>
-    <th>Actions &nbsp;</th>
-  </tr>
-    <% counter = 0 %>
-    <% @connections.each do |connection| %>
-  <tr>
-    <td><%= connection.idconnections %></td>
-    <td><%= connection.engineName %></td>
+<div id="container">
+  <div class="col-lg-10 col-lg-offset-1 col-sm-10 col-sm-offset-1">
+    <div class="row">
+      <h2 class="col-sm-12">Connections Index:</h2>
+    </div>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Engine Name</th>
+          <th>Exchange</th>
+          <th>IP</th>
+          <th>Port</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% counter = 0 %>
+        <% @connections.each do |connection| %>
+        <tr>
+          <td><%= connection.idconnections %></td>
+          <td><%= connection.engineName %></td>
 
-    <% if connection.exchange == 1 %>
-      <td>NYSE</td>
-    <%  elsif connection.exchange == 2 %>
-    <td>NASDAQ</td>
-    <% elsif connection.exchange == 3 %>
-    <td>BATS</td>
-    <% else %>
-    <td>DIRECT EDGE</td>
-    <% end %>
+          <% if connection.exchange == 1 %>
+            <td>NYSE</td>
+          <%  elsif connection.exchange == 2 %>
+          <td>NASDAQ</td>
+          <% elsif connection.exchange == 3 %>
+          <td>BATS</td>
+          <% else %>
+          <td>DIRECT EDGE</td>
+          <% end %>
 
-    <td><%= @ips[counter] %></td>
-    <td><%= connection.port %></td>
-    <td><%= link_to "Edit", edit_engine_connection_path(connection.engineName, connection.id) %></td>
-  </tr>
-    <% counter += 1 %>
-  <% end %>
-  
-</table>
-
+          <td><%= @ips[counter] %></td>
+          <td><%= connection.port %></td>
+          <td><%= link_to "Edit", edit_engine_connection_path(connection.engineName, connection.id), class: "btn btn-warning" %></td>
+        </tr>
+          <% counter += 1 %>
+        <% end %>
+      </tbody> 
+    </table>
+  </div>
 <br>
-<%= link_to "Back to Engines Index", engines_path(@engine.engineName) %>
+<%= link_to "Back to Engines Index", engines_path(@engine.engineName), class: "btn btn-primary" %>
+</div>
+</div>
+

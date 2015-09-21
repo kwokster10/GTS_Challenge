@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  root 'engines#index'
-
   resources :engines, only: [:index, :edit, :update] do
     resources :connections, only: [:index, :edit, :update] 
   end
+  
+  root 'engines#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

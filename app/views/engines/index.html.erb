@@ -1,19 +1,30 @@
-<table>
-  <tr>
-    <th>Engine Name &nbsp; &nbsp;</th>
-    <th>Last Run &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
-    <th>Users &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
-    <th>Connections &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
-  </tr>
-    <% @engines.each do |engine| %>
-  
-  <tr>
-    <td><%= link_to engine.engineName, engine_connections_path(engine.engineName) %></td>
-    <td><%= engine.lastRun %> &nbsp; <%= link_to "Edit", edit_engine_path(engine.engineName) %></td>
-    <td><%= engine.users.map(&:username).join(", ") %></td>
-    <td><%= engine.connections.map(&:sessionName).join(", ") %></td>
-  </tr>
+<div id="container">
+  <div class="col-lg-10 col-lg-offset-1 col-sm-10 col-sm-offset-1">
+    <div class="row">
+      <h2 class="col-sm-12">Engines Index:</h2>
+    </div>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Engine Name</th>
+          <th>Last Run</th>
+          <th>Users</th>
+          <th>Connections</th>
+        </tr>
+      </thead>
+          <% @engines.each do |engine| %>
+      <tbody> 
+        <tr>
+          <td><%= link_to engine.engineName, engine_connections_path(engine.engineName), class: "btn btn-info" %></td>
+          <td><%= engine.lastRun %> &nbsp; <%= link_to "Edit", edit_engine_path(engine.engineName), class: "btn btn-warning" %></td>
+          <td><%= engine.users.map(&:username).join(", ") %></td>
+          <td><%= engine.connections.map(&:sessionName).join(", ") %></td>
+        </tr>
 
-  <% end %>
-
-</table>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
